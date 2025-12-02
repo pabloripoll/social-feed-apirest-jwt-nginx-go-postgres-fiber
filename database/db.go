@@ -27,7 +27,7 @@ func Connect() {
 	fmt.Println("Connection opened to database")
 
 	// Migrate the schemas
-	err = DB.AutoMigrate(&model.FeedBook{}, &model.User{})
+	err = DB.AutoMigrate(&model.Feed{}, &model.User{})
 	if err != nil {
 		panic("Failed to migrate database schemas!")
 	}
