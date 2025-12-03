@@ -19,8 +19,18 @@ func main() {
 
 	app := fiber.New()
 
-	app.Get("/", func(c *fiber.Ctx) error {
-		return c.SendString("Hello, World!")
+	app.Get("/", func(ctx *fiber.Ctx) error {
+		return ctx.Status(fiber.StatusOK).JSON(fiber.Map{
+			"message": "Social Feed - Welcome Page.",
+			"versions": []string{"/api/v1"},
+		})
+	})
+
+	app.Get("/api", func(ctx *fiber.Ctx) error {
+		return ctx.Status(fiber.StatusOK).JSON(fiber.Map{
+			"message": "Social Feed - REST API",
+			"versions": []string{"/v1"},
+		})
 	})
 
 	router.SetupRoutes(app)
